@@ -1,6 +1,6 @@
 ﻿namespace ScientificCalculator
 {
-    partial class Form1
+    partial class scientificCalculatorForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(scientificCalculatorForm));
+            this.SuspendLayout();
+            // 
+            // scientificCalculatorForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(1078, 544);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "scientificCalculatorForm";
+            this.Text = "Scientific Calculator";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
