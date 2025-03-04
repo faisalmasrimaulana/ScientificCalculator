@@ -235,23 +235,26 @@ namespace ScientificCalculator
             if (!string.IsNullOrEmpty(operation))
             {
                 // Jika ada operasi sebelumnya, maka angka kedua diubah menjadi persen dari angka pertama
-                switch(operation)
+                switch (operation)
                 {
                     case "+":
                         percentValue = number + (number * (currentValue / 100));
                         richTextBox1.Text = percentValue.ToString();
+                        operation = "";
                         break;
                     case "-":
                         percentValue = number - (number * (currentValue / 100));
                         richTextBox1.Text = percentValue.ToString();
+                        operation = "";
                         break;
                     case "x":
                         percentValue = number * (number * (currentValue / 100));
                         richTextBox1.Text = percentValue.ToString();
+                        operation = "";
                         break;
                     case "/":
                         percentValue = number / (currentValue / 100);
-                        richTextBox1.Text = percentValue.ToString();
+                        operation = "";
                         break;
                 }
             }
