@@ -22,6 +22,7 @@ namespace ScientificCalculator
             InitializeComponent();
             richTextBox1.Text = "";
             richTextBox1.SelectionAlignment = HorizontalAlignment.Right;
+            richTextBox1.Enabled = false;
         }
 
         private void advanceFiture_Click(object sender, EventArgs e)
@@ -31,14 +32,12 @@ namespace ScientificCalculator
             {
                 basicCalculatorButton.Visible = true;
                 advanceCalculatorButton.Visible = true;
-                functionCalculatorButton.Visible = true;
                 formulaCalculatorButton.Visible = true;
             }
             else
             {
                 basicCalculatorButton.Visible = false;
                 advanceCalculatorButton.Visible = false;
-                functionCalculatorButton.Visible = false;
                 formulaCalculatorButton.Visible = false;
             }
         }
@@ -70,9 +69,16 @@ namespace ScientificCalculator
                 if (btn != null)
                 {
                     if (richTextBox1.Text == "0" || isNewInput)
-                        richTextBox1.Text = btn.Text; // Ganti 0 dengan angka pertama
+                    {
+                        // Saat input baru, kita mulai dari awal, tapi pertahankan minus kalau ada
+                        richTextBox1.Text = (richTextBox1.Text.StartsWith("-") ? "-" : "") + btn.Text;
+                    }
                     else
-                        richTextBox1.Text += btn.Text; // Tambah angka di belakang
+                    {
+                        // Kalau bukan input baru, tambahkan angka ke akhir string
+                        richTextBox1.Text += btn.Text;
+                    }
+
                 }
                 isNewInput = false;
             }
@@ -120,13 +126,16 @@ namespace ScientificCalculator
                 Button btn = sender as Button;
                 if (btn != null)
                 {
-                    //sebelum operasi hitung dimasukkan, maka angka sekarang harus disimpan terlebih dahulu, begitu juga setelah angka baru dimasukkan
-                    if (operation != "")
+                    if (!isNewInput) // Cegah perhitungan dobel saat tombol operasi ditekan berulang
                     {
-                        PerformCalculation();
+                        if (operation != "")
+                        {
+                            PerformCalculation();
+                        }
+                        number = double.Parse(richTextBox1.Text);
                     }
+
                     operation = btn.Text;
-                    number = double.Parse(richTextBox1.Text);
                     isNewInput = true;
                 }
             }
@@ -168,10 +177,10 @@ namespace ScientificCalculator
                         break;
                     }
                 case "√x":
-                    result = Math.Sqrt(number);
+                    result = Math.Sqrt(newNumber);
                     break;
                 case "x^2":
-                    result = Math.Pow(number, 2);
+                    result = Math.Pow(newNumber, 2);
                     break;
                 case "1/x":
                     if (newNumber != 0)

@@ -32,7 +32,6 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.basicCalculatorButton = new System.Windows.Forms.Button();
             this.advanceCalculatorButton = new System.Windows.Forms.Button();
-            this.functionCalculatorButton = new System.Windows.Forms.Button();
             this.formulaCalculatorButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -93,22 +92,13 @@
             this.advanceCalculatorButton.UseVisualStyleBackColor = true;
             this.advanceCalculatorButton.Visible = false;
             // 
-            // functionCalculatorButton
-            // 
-            this.functionCalculatorButton.Location = new System.Drawing.Point(333, 124);
-            this.functionCalculatorButton.Name = "functionCalculatorButton";
-            this.functionCalculatorButton.Size = new System.Drawing.Size(99, 48);
-            this.functionCalculatorButton.TabIndex = 3;
-            this.functionCalculatorButton.Text = "Function";
-            this.functionCalculatorButton.UseVisualStyleBackColor = true;
-            this.functionCalculatorButton.Visible = false;
-            // 
             // formulaCalculatorButton
             // 
-            this.formulaCalculatorButton.Location = new System.Drawing.Point(449, 124);
+            this.formulaCalculatorButton.Location = new System.Drawing.Point(328, 124);
             this.formulaCalculatorButton.Name = "formulaCalculatorButton";
             this.formulaCalculatorButton.Size = new System.Drawing.Size(99, 48);
             this.formulaCalculatorButton.TabIndex = 4;
+            this.formulaCalculatorButton.TabStop = false;
             this.formulaCalculatorButton.Text = "Formula";
             this.formulaCalculatorButton.UseVisualStyleBackColor = true;
             this.formulaCalculatorButton.Visible = false;
@@ -309,7 +299,7 @@
             this.buttonSquare.Name = "buttonSquare";
             this.buttonSquare.Size = new System.Drawing.Size(99, 48);
             this.buttonSquare.TabIndex = 23;
-            this.buttonSquare.Text = "x²";
+            this.buttonSquare.Text = "x^2";
             this.buttonSquare.UseVisualStyleBackColor = true;
             this.buttonSquare.Click += new System.EventHandler(this.operationButton_Click);
             // 
@@ -405,7 +395,6 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.formulaCalculatorButton);
-            this.Controls.Add(this.functionCalculatorButton);
             this.Controls.Add(this.advanceCalculatorButton);
             this.Controls.Add(this.basicCalculatorButton);
             this.Controls.Add(this.richTextBox1);
@@ -424,7 +413,6 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button basicCalculatorButton;
         private System.Windows.Forms.Button advanceCalculatorButton;
-        private System.Windows.Forms.Button functionCalculatorButton;
         private System.Windows.Forms.Button formulaCalculatorButton;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
