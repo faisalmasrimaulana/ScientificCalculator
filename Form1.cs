@@ -23,6 +23,12 @@ namespace ScientificCalculator
             richTextBox1.Text = "";
             richTextBox1.SelectionAlignment = HorizontalAlignment.Right;
             richTextBox1.Enabled = false;
+            this.KeyPreview = true;
+            this.KeyDown += buttonNumber_KeyDown;
+            this.KeyDown += buttonDelete_KeyDown;
+            this.KeyDown += commaButton_KeyDown;
+            this.KeyDown += operationButton_KeyDown;
+            this.KeyDown += buttonEqual_KeyDown;
         }
 
         private void advanceFiture_Click(object sender, EventArgs e)
@@ -40,6 +46,7 @@ namespace ScientificCalculator
                 advanceCalculatorButton.Visible = false;
                 formulaCalculatorButton.Visible = false;
             }
+            this.ActiveControl = null;
         }
 
         private void OnOffButton_Click(object sender, EventArgs e)
@@ -59,6 +66,7 @@ namespace ScientificCalculator
                 richTextBox1.Text = "";
                 isON = false;
             }
+            this.ActiveControl = null;
         }
 
         private void numberButton_Click(object sender, EventArgs e)
@@ -81,6 +89,7 @@ namespace ScientificCalculator
 
                 }
                 isNewInput = false;
+                this.ActiveControl = null;
             }
         }
 
@@ -95,13 +104,13 @@ namespace ScientificCalculator
             {
                 if (richTextBox1.Text != "0")
                 {
-                    if (richTextBox1.Text.StartsWith("-"))
+                    if (richTextBox1.Text.StartsWith("-"))//jika angka sudah negatif, maka tanda negatif akan dihapus
                     {
                         richTextBox1.Text = richTextBox1.Text.Substring(1);
                     }
                     else
                     {
-                        richTextBox1.Text = "-" + richTextBox1.Text;
+                        richTextBox1.Text = "-" + richTextBox1.Text;//jika angka belum negatif, maka tanda negatif akan ditambahkan
                     }
                 }
             }
@@ -135,21 +144,21 @@ namespace ScientificCalculator
                         number = double.Parse(richTextBox1.Text);
                     }
 
-                    operation = btn.Text;
-                    isNewInput = true;
+                    operation = btn.Text;//menyimpan operasi yang ditekan
+                    isNewInput = true;//menandakan input baru
                 }
             }
         }
         private void buttonEqual_Click(object sender, EventArgs e)
         {
-            if (isON || operation == "")
+            if (isON || operation == "")//jika kalkulator dalam keadaan ON atau tidak ada operasi yang ditekan
             {
                 PerformCalculation();
-                operation = "";
+                operation = "";//menghapus operasi yang disimpan
             }
         }
 
-        private void PerformCalculation()
+        private void PerformCalculation()//method untuk melakukan perhitungan
         {
             double newNumber = double.Parse(richTextBox1.Text);
             double result = 0.0;
@@ -198,7 +207,7 @@ namespace ScientificCalculator
                     break;
             }
             richTextBox1.Text = result.ToString();
-            number = result;
+            number = result;//menyimpan hasil perhitungan
             isNewInput = true;
         }
 
@@ -275,6 +284,97 @@ namespace ScientificCalculator
             }
 
             isNewInput = true; // Menandakan input baru setelah persen ditekan
+        }
+
+        private void buttonNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!isON) return; // Pastikan kalkulator dalam keadaan ON
+            if (e.KeyCode == Keys.D8 && e.Shift)
+            {
+                return;
+            }
+            if (e.KeyCode >= Keys.D0 && e.KeyCode <= Keys.D9)
+            {
+                string angka = (e.KeyCode - Keys.D0).ToString();
+
+                // Cek apakah tombol yang sesuai ditemukan di UI
+                Button targetButton = this.Controls.Find("button" + angka, true).FirstOrDefault() as Button;
+                if (targetButton != null)
+                {
+                    e.SuppressKeyPress = true; // Mencegah input default dari keyboard
+                    numberButton_Click(targetButton, EventArgs.Empty);
+                }
+            }
+            else if (e.KeyCode >= Keys.NumPad0 && e.KeyCode <= Keys.NumPad9)
+            {
+                string angka = (e.KeyCode - Keys.NumPad0).ToString();
+
+                Button targetButton = this.Controls.Find("button" + angka, true).FirstOrDefault() as Button;
+                if (targetButton != null)
+                {
+                    e.SuppressKeyPress = true; // Mencegah input default dari keyboard
+                    numberButton_Click(targetButton, EventArgs.Empty);
+                }
+            }
+        }
+
+
+        private void buttonDelete_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(!isON) return;
+            if (e.KeyCode == Keys.Back)
+            {
+                buttonDelete_Click(sender, EventArgs.Empty);
+            }
+        }
+
+        private void commaButton_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!isON) return;
+            if (e.KeyCode == Keys.Oemcomma || e.KeyCode == Keys.Decimal)
+            {
+                commaButton_Click(sender, EventArgs.Empty);
+            }
+        }
+
+        private void operationButton_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!isON) return;
+            Button targetButton = null;
+
+            if (e.KeyCode == Keys.Oemplus && e.Shift)
+            {
+                targetButton = this.Controls.Find("buttonPlus", true).FirstOrDefault() as Button;
+            }
+            else if (e.KeyCode == Keys.OemMinus)
+            {
+                targetButton = this.Controls.Find("buttonSubtract", true).FirstOrDefault() as Button;
+            }
+            else if (e.KeyCode == Keys.Oem2)
+            {
+                targetButton = this.Controls.Find("buttonDivide", true).FirstOrDefault() as Button;
+            }
+            else if (e.KeyCode == Keys.D8 && Control.ModifierKeys.HasFlag(Keys.Shift))
+            {
+                Console.WriteLine("Shift + 8 ditekan");
+                targetButton = this.Controls.Find("buttonMultiply", true).FirstOrDefault() as Button;
+            }
+            if (targetButton != null)
+            {
+                e.SuppressKeyPress = true; // Mencegah input default Windows Forms
+                operationButton_Click(targetButton, EventArgs.Empty);
+                targetButton.PerformClick();
+                this.ActiveControl = null;
+            }
+        }
+
+        private void buttonEqual_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!isON) return;
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonEqual_Click(sender, EventArgs.Empty);
+            }
         }
     }
 }

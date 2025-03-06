@@ -112,6 +112,7 @@
             this.button1.Text = "1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.numberButton_Click);
+            this.button1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonNumber_KeyDown);
             // 
             // button2
             // 
@@ -122,6 +123,7 @@
             this.button2.Text = "2";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.numberButton_Click);
+            this.button2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonNumber_KeyDown);
             // 
             // button3
             // 
@@ -132,6 +134,7 @@
             this.button3.Text = "3";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.numberButton_Click);
+            this.button3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonNumber_KeyDown);
             // 
             // button6
             // 
@@ -142,6 +145,7 @@
             this.button6.Text = "6";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.numberButton_Click);
+            this.button6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonNumber_KeyDown);
             // 
             // button5
             // 
@@ -152,6 +156,7 @@
             this.button5.Text = "5";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.numberButton_Click);
+            this.button5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonNumber_KeyDown);
             // 
             // button4
             // 
@@ -162,6 +167,7 @@
             this.button4.Text = "4";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.numberButton_Click);
+            this.button4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonNumber_KeyDown);
             // 
             // button9
             // 
@@ -172,6 +178,7 @@
             this.button9.Text = "9";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.numberButton_Click);
+            this.button9.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonNumber_KeyDown);
             // 
             // button8
             // 
@@ -182,6 +189,7 @@
             this.button8.Text = "8";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.numberButton_Click);
+            this.button8.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonNumber_KeyDown);
             // 
             // button7
             // 
@@ -192,6 +200,7 @@
             this.button7.Text = "7";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.numberButton_Click);
+            this.button7.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonNumber_KeyDown);
             // 
             // buttonRoot
             // 
@@ -212,6 +221,7 @@
             this.buttonDivide.Text = "/";
             this.buttonDivide.UseVisualStyleBackColor = true;
             this.buttonDivide.Click += new System.EventHandler(this.operationButton_Click);
+            this.buttonDivide.KeyDown += new System.Windows.Forms.KeyEventHandler(this.operationButton_KeyDown);
             // 
             // buttonSubtract
             // 
@@ -222,6 +232,7 @@
             this.buttonSubtract.Text = "-";
             this.buttonSubtract.UseVisualStyleBackColor = true;
             this.buttonSubtract.Click += new System.EventHandler(this.operationButton_Click);
+            this.buttonSubtract.KeyDown += new System.Windows.Forms.KeyEventHandler(this.operationButton_KeyDown);
             // 
             // buttonDelete
             // 
@@ -232,6 +243,7 @@
             this.buttonDelete.Text = "Del";
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            this.buttonDelete.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonDelete_KeyDown);
             // 
             // buttonMultiply
             // 
@@ -242,6 +254,7 @@
             this.buttonMultiply.Text = "x";
             this.buttonMultiply.UseVisualStyleBackColor = true;
             this.buttonMultiply.Click += new System.EventHandler(this.operationButton_Click);
+            this.buttonMultiply.KeyDown += new System.Windows.Forms.KeyEventHandler(this.operationButton_KeyDown);
             // 
             // buttonPlus
             // 
@@ -252,6 +265,7 @@
             this.buttonPlus.Text = "+";
             this.buttonPlus.UseVisualStyleBackColor = true;
             this.buttonPlus.Click += new System.EventHandler(this.operationButton_Click);
+            this.buttonPlus.KeyDown += new System.Windows.Forms.KeyEventHandler(this.operationButton_KeyDown);
             // 
             // commaButton
             // 
@@ -262,6 +276,7 @@
             this.commaButton.Text = ".";
             this.commaButton.UseVisualStyleBackColor = true;
             this.commaButton.Click += new System.EventHandler(this.commaButton_Click);
+            this.commaButton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.commaButton_KeyDown);
             // 
             // negativePositiveButton
             // 
@@ -282,6 +297,7 @@
             this.button0.Text = "0";
             this.button0.UseVisualStyleBackColor = true;
             this.button0.Click += new System.EventHandler(this.numberButton_Click);
+            this.button0.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonNumber_KeyDown);
             // 
             // buttonInvers
             // 
@@ -332,6 +348,7 @@
             this.buttonEqual.Text = "=";
             this.buttonEqual.UseVisualStyleBackColor = true;
             this.buttonEqual.Click += new System.EventHandler(this.buttonEqual_Click);
+            this.buttonEqual.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonEqual_KeyDown);
             // 
             // buttonPercent
             // 
